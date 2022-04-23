@@ -1,14 +1,24 @@
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
+import { getQuantityItems } from "../../store/additional/additionalSelectors";
+import { getFlights } from "../../store/filter/filterSelectors";
+import { increaseQuantityItems } from "../../store/additional/actions";
+
 import Ticket from "./ticket/Ticket";
 
-
-
-
 const Tickets = () => {
+    const flight = useSelector(getFlights, shallowEqual);
+    const { itemsToShow } = useSelector(getQuantityItems)
+    const dispatch = useDispatch();
+
+    const items = flight.slice(0, itemsToShow);
+
+    const onHandleAdd = () => {
+        dispatch(increaseQuantityItems());
+    }
     return (
         <div className="tickets">
-            <Ticket />
-            <Ticket />
-            <button className="tickets__button" >
+            {items.map(item => <Ticket key={item.flightToken} item={item.flight} />)}
+            <button className="tickets__button" onClick={onHandleAdd} >
                 Показать еще
             </button>
         </div>

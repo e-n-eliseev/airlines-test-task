@@ -1,15 +1,12 @@
+import { PATH } from "../../../utils/constants";
+import PathItem from "./PathItem";
 
 
 const PathFilter = () => {
     return (
         <form className="filter">
             <p className="filter__heading">Фильтровать</p>
-            <label>
-                <input type="checkbox" /> - 1 пересадка
-            </label>
-            <label>
-                <input type="checkbox" /> - без пересадок
-            </label>
+            {PATH.map((item, index) => <PathItem key={index} item={item} />)}
         </form>
     );
 };

@@ -54,6 +54,22 @@ $text-color:#1c1c1c;
     margin-top: 30px;
     width: 100%;
     padding: 2px;
+    position: relative;
+    &__message{
+        position: absolute;
+        top:50%;
+        left:0;
+        font-weight: 800;
+        font-size: 25px;
+        background-color: red;
+        padding: 20px;
+        border-radius: 20px;
+        text-align: center;
+        box-shadow: 0 0 10px red,
+                    0 0 30px red,
+                    0 0 90px red,
+                    0 0 120px red;
+    }
     &__main-info{
         min-height: 40px;
         background-color: transparent;
@@ -72,7 +88,7 @@ $text-color:#1c1c1c;
             height: 100%;
             top:0;
             left:0;
-            object-fit: cover;
+            object-fit: fill;
         }
     }
     &__price-info{
@@ -97,11 +113,7 @@ $text-color:#1c1c1c;
             font-size: 18px;
             font-weight: 500;
         }
-        &-departure-airport, &-arrival-city{
-            text-transform: uppercase;
-        }
         &-departure-alias, &-arrival-alias{
-            text-transform: uppercase;
             color: $bg-color;
         }
         &-travel-time{
@@ -161,6 +173,9 @@ $text-color:#1c1c1c;
     }
     &__price{
         margin: 0;
+        & input{
+            padding: 0 10px;
+        }
     }
     &__price-label{
         margin-top: 15px;
@@ -176,4 +191,8 @@ $text-color:#1c1c1c;
         text-overflow: ellipsis;
         white-space: nowrap;
     }
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button{
+    -webkit-appearance: none;
 }

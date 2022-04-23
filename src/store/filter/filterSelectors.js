@@ -1,0 +1,1 @@
+export const getFlights = state => state.filter.filteredFlights;

@@ -1,50 +1,62 @@
 import { memo } from "react";
+import moment from "moment";
+import 'moment/locale/ru';
 
+moment.locale('ru');
 
-const FlightInfo = memo(() => {
+const FlightInfo = memo(({ info }) => {
+    const departure = info.segments[0];
+    const arrival = info.segments.length === 1 ? departure : info.segments[1]
     return (
         <div className="ticket__additional-info">
             <p className="ticket__additional-path">
                 <span className="ticket__additional-departure-city">
-                    Москва,&nbsp;
+                    {departure.departureCity.caption},&nbsp;
                 </span>
                 <span className="ticket__additional-departure-airport">
-                    Шереметьево&nbsp;
+                    {departure.departureAirport.caption}&nbsp;
                 </span>
                 <span className="ticket__additional-departure-alias">
-                    (SVO) →&nbsp;
+                    ({departure.departureAirport.uid}) →&nbsp;
                 </span>
                 <span className="ticket__additional-arrival-city">
-                    Лондон,&nbsp;
+                    {arrival.arrivalCity.caption},&nbsp;
                 </span>
                 <span className="ticket__additional-arrival-airport">
-                    Лондон, Хитроу&nbsp;
+                    {arrival.arrivalAirport.caption}&nbsp;
                 </span>
                 <span className="ticket__additional-arrival-alias">
-                    (SVO)
+                    ({arrival.arrivalAirport.uid})
                 </span>
             </p>
             <hr />
             <div className="ticket__additional-travel-time">
                 <p>
-                    20:40
+                    {moment(departure.departureDate).format('LT')}
                     &nbsp;
-                    <span>18 авг. вт</span>
+                    <span>
+                        {moment(departure.departureDate).format('D MMM dd')}
+                    </span>
                 </p>
                 <p>
-                    🕓 14 ч 45 мин
+                    🕓 {Number.parseInt(info.duration / 60)} ч {info.duration % 60} мин
                 </p>
                 <p>
-                    <span>18 авг. вт</span>
+                    <span>
+                        {moment(arrival.arrivalDate).format('D MMM dd')}
+                    </span>
                     &nbsp;
-                    20:40
+                    {moment(arrival.arrivalDate).format('LT')}
                 </p>
             </div>
             <p className="ticket__additional-transfers">
-                <span> 1 пересадка </span>
+                {info.segments.length === 2 ? <span> 1 пересадка </span> : null}
             </p>
             <p className="ticket__additional-company">
-                Рейс выполняет:BT Air Baltic Corporation A/S
+                Рейс выполняет: {departure.operatingAirline?.caption
+                    ? departure.operatingAirline.caption
+                    : departure.airline.caption
+                }
             </p>
         </div>
     )

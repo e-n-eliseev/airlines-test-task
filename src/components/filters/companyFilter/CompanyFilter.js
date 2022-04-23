@@ -1,19 +1,13 @@
+import { COMPANIES_MIN_PRICE } from "../../../utils/constants";
+import Company from "./Company";
 
-
-const CompanyFilterc = () => {
+const CompanyFilter = () => {
     return (
         <form className="filter">
             <p className="filter__heading">Авиакомпании</p>
-            <div className="filter__company"><label className="filter__label">
-                <input type="checkbox" /> - LOT Polish Airlines
-            </label><p>от 21049 р.</p>
-            </div>
-            <div className="filter__company"><label className="filter__label">
-                <input type="checkbox" /> - Aeroflot - Российские авиалинии
-            </label><p>от 21049 р.</p>
-            </div>
+            {COMPANIES_MIN_PRICE.map((item, index) => <Company key={index} item={item} />)}
         </form >
     );
 };
 
-export default CompanyFilterc;
+export default CompanyFilter;

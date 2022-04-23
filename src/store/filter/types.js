@@ -1,0 +1,1 @@
+export const COMPANY_FILTER = "COMPANY::COMPANY_FILTER";
