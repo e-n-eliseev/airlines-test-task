@@ -1,4 +1,4 @@
-import { memo, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { baseQuantityItems } from "../../../store/additional/actions";
 import { priceFilter } from "../../../store/filter/actions";
