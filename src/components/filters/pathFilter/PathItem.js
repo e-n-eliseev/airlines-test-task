@@ -1,8 +1,22 @@
+import { useDispatch } from "react-redux";
+import { pathFilter } from "../../../store/filter/actions";
+import { baseQuantityItems } from "../../../store/additional/actions";
 
-const PathItem = ({ item }) => {
+const PathItem = ({ item, disabled }) => {
+    const dispatch = useDispatch()
+
+    //checkbox change handler
+    const onChange = (item) => {
+        dispatch(pathFilter(item));
+        dispatch(baseQuantityItems());
+    }
+
     return (
         <label>
-            <input type="checkbox" /> {item}
+            <input
+                type="checkbox"
+                onChange={() => onChange(item)}
+                disabled={disabled} /> {item}
         </label>
     )
 }

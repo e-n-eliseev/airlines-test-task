@@ -5,28 +5,31 @@ import 'moment/locale/ru';
 moment.locale('ru');
 
 const FlightInfo = memo(({ info }) => {
+
+    //initialising departure and arrival points
     const departure = info.segments[0];
     const arrival = info.segments.length === 1 ? departure : info.segments[1]
+
     return (
         <div className="ticket__additional-info">
             <p className="ticket__additional-path">
                 <span className="ticket__additional-departure-city">
-                    {departure.departureCity.caption},&nbsp;
+                    {departure.departureCity?.caption},&nbsp;
                 </span>
                 <span className="ticket__additional-departure-airport">
-                    {departure.departureAirport.caption}&nbsp;
+                    {departure.departureAirport?.caption}&nbsp;
                 </span>
                 <span className="ticket__additional-departure-alias">
-                    ({departure.departureAirport.uid}) →&nbsp;
+                    ({departure.departureAirport?.uid}) →&nbsp;
                 </span>
                 <span className="ticket__additional-arrival-city">
-                    {arrival.arrivalCity.caption},&nbsp;
+                    {arrival.arrivalCity?.caption},&nbsp;
                 </span>
                 <span className="ticket__additional-arrival-airport">
-                    {arrival.arrivalAirport.caption}&nbsp;
+                    {arrival.arrivalAirport?.caption}&nbsp;
                 </span>
                 <span className="ticket__additional-arrival-alias">
-                    ({arrival.arrivalAirport.uid})
+                    ({arrival.arrivalAirport?.uid})
                 </span>
             </p>
             <hr />

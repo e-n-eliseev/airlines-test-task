@@ -3,16 +3,18 @@ import FlightInfo from "./flightInfo/FlightInfo";
 
 
 const Ticket = memo(({ item }) => {
-    const [message, setMessage] = useState(false);
 
+    //initialising flag state for message
+    const [message, setMessage] = useState(false);
+    //changing flag state for message
     const onclick = () => {
         setMessage(true);
     }
-
+    //timeout for message
     useEffect(() => {
         const timeout = setTimeout(() => {
             setMessage(false)
-        }, 3000)
+        }, 2000)
         return () => clearTimeout(timeout)
     }, [message])
 

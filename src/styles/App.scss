@@ -1,0 +1,18 @@
+@import "./_vars";
+@import  "./blocks/tickets";
+@import "./blocks/filters";
+
+.App {
+    @extend %flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap:40px;
+    background-color: $main-color;
+    min-height: 100vh;
+    color: $text-color
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button{
+    -webkit-appearance: none;
+}

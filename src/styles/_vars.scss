@@ -1,0 +1,24 @@
+$main-color:#fff;
+$btn-color:#ffb168;
+$btn-color-hover:#ec9b4f;
+$bg-color:#0087c9;
+$text-color:#1c1c1c;
+
+%flex {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+%btn{
+    &:hover{
+        background-color: $btn-color-hover;
+    }
+}
+%danger{
+    border-radius: 20px;
+    background-color: red;
+    box-shadow: 0 0 10px red,
+                0 0 30px red,
+                0 0 90px red,
+                0 0 120px red;
+}
