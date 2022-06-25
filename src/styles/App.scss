@@ -1,4 +1,4 @@
-@import "./_vars";
+@import "./Constatnts.scss";
 @import  "./blocks/tickets";
 @import "./blocks/filters";
 
@@ -6,6 +6,8 @@
     @extend %flex;
     flex-direction: row;
     align-items: flex-start;
+    flex-wrap: wrap;
+    padding: 10px;
     gap:40px;
     background-color: $main-color;
     min-height: 100vh;

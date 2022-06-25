@@ -26,6 +26,7 @@ const initialState = {
 const filterReducer = (state = initialState, { type, method }) => {
     switch (type) {
         case SORT_FILTER:
+
             return jointFilter({
                 ...state,
                 filters: {
